@@ -8,7 +8,6 @@ def isSignIn():
     else:
         return True
 
-
 @click.group()
 def main():
     """

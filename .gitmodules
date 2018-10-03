@@ -1,0 +1,3 @@
+[submodule "HMI/SPI-Py"]
+	path = HMI/SPI-Py
+	url = git://github.com/lthiery/SPI-Py.git
