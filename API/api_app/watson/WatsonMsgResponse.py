@@ -13,14 +13,16 @@ class WatsonMsgResponse:
 
     def __init__(self,response):
         if(response["input"]!=None):
-            input=response["input"]
+            self.input=response["input"]
         if(response["intents"]!=None):
-            input=response["intents"]
+            self.intents=response["intents"]
         if(response["entities"]!=None):
-            input=response["entities"]
+            self.entities=response["entities"]
         if(response["alternate_intents"]!=None):
-            input=response["alternate_intents"]
+            self.alternate_intents=response["alternate_intents"]
         if(response["context"]!=None):
-            input=response["context"]
+            self.context=response["context"]
+        if(response["output"]!=None):
+            self.actions=response["output"]
         if(response["actions"]!=None):
-            input=response["actions"]
+            self.actions=response["actions"]

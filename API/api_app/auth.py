@@ -6,7 +6,8 @@ from flask import (
     Blueprint, request, session, url_for, g, redirect, jsonify
 )
 
-from werkzeug.security import check_password_hash, generate_password_hash
+#from werkzeug.security import check_password_hash, generate_password_hash
+from .main import tm
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -17,10 +18,13 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        session.clear()
-        session['user_id'] = username #is a dictionary that stores data across requests.
-        #return redirect(url_for('request.makeRequest'))
-        return jsonify( {"Respuesta": "successful login", "username": username})
+        if(tm.verifyUser(username,password)):
+            session.clear()
+            session['user_id'] = username #is a dictionary that stores data across requests.
+
+            return jsonify( {"Respuesta": "successful login", "username": username})
+        else:
+            return jsonify( {"Respuesta": "bad username or password"})
     else:
         return jsonify( {"Respuesta": "you have to login first"})
 
@@ -37,8 +41,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None # it uses g to store important data in cache
     else:
-        #g.user = getUserFromDB(user_id)
-        g.user=user_id #para prueba
+        g.user = tm.db.getUser(user_id).username
 
 
 def login_required(view):

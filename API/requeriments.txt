@@ -1,2 +1,22 @@
 flask
 request
+sqlalchemy
+mysqlclient
+
+#windows
+python -m pip install flask
+python -m pip install request
+python -m pip install sqlalchemy
+python -m pip install mysqlclient
+
+pip install --upgrade "watson-developer-cloud>=2.2.6"
+
+download mysqlclient from https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient and install manually
+you'll need wheel to make the install 
+
+you have to install Build tools for visual studio 2017 
+https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
+Select: Workloads → Visual C++ build tools.
+Install options: select only the “Windows 10 SDK” (assuming the computer is Windows 10)
+
+When Mysql Server is installing select aunthentication method: Legacy

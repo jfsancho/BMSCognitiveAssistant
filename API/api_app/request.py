@@ -1,7 +1,7 @@
 from flask import (
-    Blueprint, request, session, url_for, g, jsonify
+    Blueprint, request, session, url_for, jsonify
 )
-from api_app.auth import login_required
+from .auth import login_required
 
 bp = Blueprint('request', __name__, url_prefix='/request')
 
