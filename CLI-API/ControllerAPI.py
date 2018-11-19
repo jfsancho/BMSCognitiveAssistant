@@ -16,7 +16,7 @@ class ControllerAPI:
             print('[!] [{0}] Server Error'.format(response.status_code))
             return None
         elif response.status_code == 404:
-            print('[!] [{0}] URL not found: [{1}]'.format(response.status_code,api_url))
+            print('[!] [{0}] URL not found:[{1}]'.format(response.status_code,response.url))
             return None
         elif response.status_code == 401:
             print('[!] [{0}] Authentication Failed'.format(response.status_code))
@@ -58,7 +58,7 @@ class ControllerAPI:
         try:
             resp=requests.post(path, data=message,verify=False)
             if resp.status_code != 200:
-                sef.manageError(resp)
+                self.manageError(resp)
                 return "error"
             else:
                 return resp.json()["Respuesta"]

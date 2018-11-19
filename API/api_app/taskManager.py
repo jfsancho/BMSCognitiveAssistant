@@ -25,9 +25,28 @@ class TaskManager:
                 return True
             else:
                 return False
-    
+    def clasifyWatsonResponse(self, wResponse):
+        intent=wResponse.intents[0]
+        if(intent=="Turn_off"):
+            #verify if is the end of conversation 
+            #verify the needed variables from watson
+            return wResponse.output
+        elif(intent=="Turn_on"):
+            #verify if is the end of conversation
+            #get the needed variables from watson
+            return wResponse.output
+
+        else:
+            return wResponse.output 
+   
     def callWatson(self,text):
         wResponse=self.assistant.sendMessage(text)
         print(jsonify(wResponse))
+        textResponse=self.clasifyWatsonResponse(wResponse)
+        return textResponse
+
+    
+
+
 
     
